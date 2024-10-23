@@ -20,8 +20,12 @@ export default async function Home({
   const fetchedData: {
     count?: number;
     results?: Person[];
-    details?: string;
+    error?: Error;
   } = await getPeople(page, searchTerm);
+
+  if (fetchedData.error) {
+    throw new Error(fetchedData.error.message);
+  }
 
   const totalCount = fetchedData.count || 0;
 

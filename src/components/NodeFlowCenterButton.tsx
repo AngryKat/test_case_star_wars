@@ -11,7 +11,7 @@ export function NodeFlowCenterButton() {
     const nodes = Array.from(nodeLookup).map(([, node]) => node);
 
     if (nodes.length > 0) {
-      // focus on primary node
+      // focus on the first node. Should be the selected hero
       const node = nodes[0];
 
       const x = node.position.x + (node.measured.width ?? 0) / 2;

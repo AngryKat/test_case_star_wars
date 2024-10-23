@@ -2,8 +2,9 @@ import { type NodeCardProps } from "@/components/NodeCard";
 import { PersonNodeFlow } from "@/components/PersonNodeFlow";
 import { getFilmById, getPersonById, getStarshipById } from "@/utils/api";
 import type { Film, Person, Starship } from "@/utils/types";
-import { Edge } from "@xyflow/react";
+import type { Edge, Node } from "@xyflow/react";
 
+// what info to omit while rendering a card
 const OMIT_STARSHIP_KEYS: Array<keyof Starship> = [
   "crew",
   "id",
@@ -12,7 +13,7 @@ const OMIT_STARSHIP_KEYS: Array<keyof Starship> = [
   "url",
   "edited",
   "created",
-  "pilots"
+  "pilots",
 ];
 const OMIT_PERSON_KEYS: Array<keyof Person> = [
   "id",
@@ -44,13 +45,18 @@ function createEdge(source: number, target: number): Edge {
     target: target.toString(),
   };
 }
-
+/**
+ * @param id node id. Should be the same as in db.
+ * @param data props that will be used in NodeCard.
+ * @param index describes how "low" the node will be rendered.
+ * @param level describes how far to the "right" the node will be rendered.
+ */
 function createNode<T>(
   id: number,
   data: NodeCardProps<T>,
   index = 0,
   level = 0
-) {
+): Node {
   return {
     id: id.toString(),
     position: { x: level * 450 + 16, y: index * 200 + 16 },
@@ -59,11 +65,11 @@ function createNode<T>(
   };
 }
 
-export default async function PersonPage({
-  params,
-}: {
+interface Props {
   params: { id: string };
-}) {
+}
+
+export default async function PersonPage({ params }: Props) {
   const personData: Person = await getPersonById(params.id);
   const personFilmsData: Film[] = await Promise.all(
     personData.films.map((filmId) => getFilmById(filmId))
@@ -76,16 +82,12 @@ export default async function PersonPage({
   );
 
   const filmsToStarshipsEdges =
-    // avoid doing computations if the person does not pilot any starships
-    personStarshipsData.length === 0
+    personStarshipsData.length === 0 // avoid doing computations if the character does not pilot any starships
       ? []
       : personFilmsData.flatMap((film) => {
-          return (
-            film.starships
-              // get only those starships, that belong to the character
-              .filter((id) => personData.starships.includes(id))
-              .map((starshipId) => createEdge(film.id, starshipId))
-          );
+          return film.starships
+            .filter((id) => personData.starships.includes(id)) // get only those starships, that belong to the character
+            .map((starshipId) => createEdge(film.id, starshipId));
         });
 
   const filmNodes = personFilmsData.map((film, index) =>
@@ -100,7 +102,6 @@ export default async function PersonPage({
           omitKeys: OMIT_FILM_KEYS,
         },
       },
-
       index,
       1
     )

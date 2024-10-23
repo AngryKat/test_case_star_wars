@@ -1,8 +1,7 @@
 "use client";
 import { Card, Button } from "antd";
-import { CSSProperties, Fragment, useMemo, useState } from "react";
+import { CSSProperties, useMemo, useState } from "react";
 import styles from "./NodeCard.module.scss";
-import { Handle, NodeProps, Position } from "@xyflow/react";
 
 export type NodeCardProps<T> = {
   data: {
@@ -19,6 +18,7 @@ export function NodeCard<T extends Record<string, string | number>>({
 }: NodeCardProps<T>) {
   const { title, headerBgColor, headerFontColor, item, omitKeys } = data;
   const [toggled, setToggled] = useState(false);
+  // memoize to prevent unnecessary computations while toggling
   const renderEntries = useMemo(() => {
     return Object.entries(item)
       .filter(([key]) => !(omitKeys ?? []).includes(key as keyof T))

@@ -1,0 +1,36 @@
+@import "@/scss/mixins";
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header,
+.footer {
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-color: #000000;
+  font-family: var(--font-star-jedi-hollow-sans);
+}
+.header {
+  padding: 1rem 0;
+  h1 {
+    cursor: pointer;
+    color: #ffe81f;
+    text-transform: lowercase;
+  }
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 1rem;
+}

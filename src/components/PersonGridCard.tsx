@@ -39,7 +39,7 @@ export function PersonGridCard({ person }: Props) {
   const renderEntries = Object.entries(person)
     .filter(([key]) => !OMIT_KEYS.includes(key as keyof Person))
     .map(([key, value]) => (
-      <div className={styles.dataEntry}>
+      <div key={key} className={styles.dataEntry}>
         <b>{key.split("_").join(" ")}:</b>{" "}
         {Object.keys(MEASURE_UNITS).includes(key)
           ? parseValueWithMeasureUnit(value, key as keyof typeof MEASURE_UNITS)

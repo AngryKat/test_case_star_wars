@@ -23,7 +23,7 @@ export function NodeCard<T extends Record<string, string | number>>({
     return Object.entries(item)
       .filter(([key]) => !(omitKeys ?? []).includes(key as keyof T))
       .map(([key, value]) => (
-        <div className={styles.dataEntry}>
+        <div key={key} className={styles.dataEntry}>
           <b>{key.split("_").join(" ")}:</b> {value}
         </div>
       ));

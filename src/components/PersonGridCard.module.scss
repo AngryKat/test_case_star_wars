@@ -1,0 +1,20 @@
+.card {
+  height: 100%;
+  cursor: pointer;
+  & > div:first-child {
+    background-color: black;
+  }
+
+  transition: transform 0.25s;
+
+  &:hover {
+    box-shadow: 0 0 30px #f0f0f0;
+    transform: scale(1.015);
+    transition: transform 0.25s;
+  }
+}
+
+.title {
+  font-size: 1rem;
+  color: #f0f0f0;
+}

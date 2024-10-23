@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  max-width: 1200px;
+  height: 850px;
+  border: 1px solid whitesmoke;
+  margin: 0 auto;
+}
+
+.buttonContainer {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+}

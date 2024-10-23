@@ -1,0 +1,25 @@
+@import "@/scss/mixins";
+
+.wrapper {
+  background-color: #fdfdfd;
+  @include m {
+    padding: 0rem 5rem;
+  }
+}
+
+.pagination {
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+
+.gridContainer {
+  flex-grow: 1;
+}
+.searchInputContainer {
+  margin: 1rem;
+  @include l {
+    width: 50%;
+    margin: 1.5rem auto 0 auto;
+  }
+}

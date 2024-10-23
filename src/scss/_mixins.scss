@@ -1,0 +1,28 @@
+/* Dimensions taken from https://www.w3schools.com/css/css_rwd_mediaqueries.asp as for 2024 */
+@mixin xs() {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin s() {
+  @media only screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin m() {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin l() {
+  @media only screen and (min-width: 992px) {
+    @content;
+  }
+}
+@mixin xl() {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}

@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
 import { Input } from "antd";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import styles from "./SearchInput.module.scss";
@@ -17,9 +17,9 @@ export function SearchInput() {
     } else {
       params.delete("searchTerm");
     }
-    // delete value for page param so we can get results only by the search term
-    params.delete("page");
-    replace(`${pathname}?${params.toString()}`);
+    replace(
+      `${pathname}${params.toString().length ? "?" + params.toString() : ""}`
+    );
   };
 
   return (

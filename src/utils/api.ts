@@ -2,11 +2,12 @@ const baseUrl = process.env.API_BASE_URL || "";
 
 export async function getPeople(page: number, searchTerm: string) {
   const params = new URLSearchParams();
-  params.set("page", page.toString());
   if (searchTerm) {
     params.set("search", searchTerm);
+    params.delete("page");
   } else {
     params.delete("search");
+    params.set("page", page.toString());
   }
   const res = await fetch(`${baseUrl}/people?${params.toString()}`);
   if (!res.ok) {

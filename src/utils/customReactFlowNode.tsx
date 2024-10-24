@@ -1,10 +1,10 @@
+import React from 'react';
 import { ComponentType, Fragment } from "react";
 import {
   Handle,
   type NodeProps,
   Position,
 } from "@xyflow/react";
-import { NodeCard } from "@/components/NodeCard";
 
 import "@xyflow/react/dist/style.css";
 
@@ -14,7 +14,7 @@ type CustomNodeComponentProps<T> = {
 } & NodeProps
 
 // create HOC to use react components as custom nodes for React flow
-export function customNode<PropsType>(WrappedComponent: ComponentType<PropsType>) {
+export function customReactFlowNode<PropsType>(WrappedComponent: ComponentType<PropsType>) {
   const CustomNodeComponent = ({
     isConnectable,
     data,
@@ -43,7 +43,3 @@ export function customNode<PropsType>(WrappedComponent: ComponentType<PropsType>
 
   return CustomNodeComponent;
 }
-
-export const nodeTypes = {
-  customNode: customNode(NodeCard),
-};

@@ -8,7 +8,15 @@
 }
 
 .dataEntry {
+  display: flex;
+  gap: 0.25rem;
   text-transform: capitalize;
+  dt {
+    font-weight: bold;
+    &:after {
+      content: ':';
+    }
+  }
 }
 
 .title {

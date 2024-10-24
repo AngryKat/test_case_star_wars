@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { Card, Button } from "antd";
 import { CSSProperties, useMemo, useState } from "react";
 import styles from "./NodeCard.module.scss";
@@ -24,10 +25,10 @@ export function NodeCard<T extends Record<string, string | number>>({
       .filter(([key]) => !(omitKeys ?? []).includes(key as keyof T))
       .map(([key, value]) => (
         <div key={key} className={styles.dataEntry}>
-          <b>{key.split("_").join(" ")}:</b> {value}
+          <dt>{key.split("_").join(" ")}</dt><dd>{value}</dd>
         </div>
       ));
-  }, [item]);
+  }, [item, omitKeys]);
 
   return (
     <Card
@@ -42,7 +43,7 @@ export function NodeCard<T extends Record<string, string | number>>({
         } as CSSProperties
       }
     >
-      {toggled && renderEntries}
+      <dl>{toggled && renderEntries}</dl>
       <Button block>{toggled ? "Hide" : "More"}</Button>
     </Card>
   );

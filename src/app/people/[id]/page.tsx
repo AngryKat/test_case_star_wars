@@ -1,8 +1,7 @@
-import { type NodeCardProps } from "@/components/NodeCard";
 import { PersonNodeFlow } from "@/components/PersonNodeFlow";
 import { getFilmById, getPersonById, getStarshipById } from "@/utils/api";
 import type { Film, Person, Starship } from "@/utils/types";
-import type { Edge, Node } from "@xyflow/react";
+import { createEdge, createNode } from "@/utils/reactFlowhelperFunctions";
 
 // what info to omit while rendering a card
 const OMIT_STARSHIP_KEYS: Array<keyof Starship> = [
@@ -37,33 +36,6 @@ const OMIT_FILM_KEYS: Array<keyof Film> = [
   "vehicles",
   "characters",
 ];
-// helper function to create Edge object for react flow
-function createEdge(source: number, target: number): Edge {
-  return {
-    id: `${source}-${target}`,
-    source: source.toString(),
-    target: target.toString(),
-  };
-}
-/**
- * @param id node id. Should be the same as in db.
- * @param data props that will be used in NodeCard.
- * @param index describes how "low" the node will be rendered.
- * @param level describes how far to the "right" the node will be rendered.
- */
-function createNode<T>(
-  id: number,
-  data: NodeCardProps<T>,
-  index = 0,
-  level = 0
-): Node {
-  return {
-    id: id.toString(),
-    position: { x: level * 450 + 16, y: index * 200 + 16 },
-    data,
-    type: "customNode",
-  };
-}
 
 interface Props {
   params: { id: string };

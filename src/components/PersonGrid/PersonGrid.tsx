@@ -1,5 +1,5 @@
 import { Person } from "@/utils/types";
-import { PersonGridCard } from "./PersonGridCard";
+import { PersonGridCard } from "../PersonGridCard/PersonGridCard";
 import styles from "./PersonGrid.module.scss";
 import Link from "next/link";
 

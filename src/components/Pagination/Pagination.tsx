@@ -1,11 +1,12 @@
 "use client";
+import React from "react";
 import { Pagination as AntdPagination } from "antd";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const MOBILE_MAX_WIDTH_PX = 600;
 
-export default function Pagination({
+export function Pagination({
   total,
   currentPage,
   className = "",
@@ -39,6 +40,7 @@ export default function Pagination({
   if (windowWidth > MOBILE_MAX_WIDTH_PX && visibleOnMobileOnly) return null;
   return (
     <AntdPagination
+      data-testid={visibleOnMobileOnly ? "pagination-mobile" : "pagination"}
       current={currentPage}
       total={total}
       onChange={handlePageChange}

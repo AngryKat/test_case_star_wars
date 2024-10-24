@@ -2,12 +2,12 @@
 import { Card } from "antd";
 import { Person } from "@/utils/types";
 import styles from "./PersonGridCard.module.scss";
-import ChevronRightIcon from "../../public/icons/chevron-forward-circle-outline.svg";
+import ChevronRightIcon from "../../public/icons/chevron-right-icon.svg";
 
-interface Props {
+export interface PersonGridCardProps {
   person: Person;
 }
-export function PersonGridCard({ person }: Props) {
+export function PersonGridCard({ person }: PersonGridCardProps) {
   return (
     <Card className={[styles.card, styles.ripple].join(" ")}>
       <div className={styles.content}>

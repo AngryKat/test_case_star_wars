@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import {
   type Edge,
   type Node,
@@ -7,12 +8,15 @@ import {
   useEdgesState,
   useNodesState,
 } from "@xyflow/react";
-import { nodeTypes } from "@/utils/customNodeHOC";
-import { NodeFlowCenterButton } from "./NodeFlowCenterButton";
+import { customReactFlowNode } from "@/utils/customReactFlowNode";
+import { NodeFlowCenterButton } from "../NodeFlowCenterButton";
 import "@xyflow/react/dist/style.css";
 import styles from "./PersonNodeFlow.module.scss";
+import { NodeCard } from "../NodeCard/NodeCard";
 
-
+const nodeTypes = {
+  customNode: customReactFlowNode(NodeCard),
+};
 
 export function PersonNodeFlow({
   initialEdges,

@@ -1,4 +1,4 @@
-import Pagination from "@/components/Pagination";
+import { Pagination } from "@/components/Pagination/Pagination";
 import { PersonGrid } from "@/components/PersonGrid";
 import { getPeople } from "@/utils/api";
 import { Person } from "@/utils/types";

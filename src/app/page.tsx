@@ -38,6 +38,7 @@ export default async function Home({
         total={totalCount}
         currentPage={page}
         className={styles.pagination}
+        visibleOnMobileOnly
       />
       <div className={styles.gridContainer}>
         {fetchedData.results && <PersonGrid items={fetchedData.results} />}

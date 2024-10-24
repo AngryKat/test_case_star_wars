@@ -9,7 +9,7 @@ export function PersonGrid({ items }: { items: Person[] }) {
       <ul>
         {items.map((item) => (
           <li key={item.id}>
-            <Link href={`person/${item.id}`}>
+            <Link href={`people/${item.id}`}>
               <PersonGridCard person={item} />
             </Link>
           </li>

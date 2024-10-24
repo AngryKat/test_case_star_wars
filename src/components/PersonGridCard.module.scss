@@ -1,9 +1,7 @@
 .card {
   height: 100%;
   cursor: pointer;
-  & > div:first-child {
-    background-color: black;
-  }
+  color: #f0f0f0;
 
   transition: transform 0.25s;
 
@@ -12,13 +10,63 @@
     transform: scale(1.015);
     transition: transform 0.25s;
   }
+
+  .content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
 }
 
-.dataEntry {
-  text-transform: capitalize;
+div.card {
+  background-color: black;
+  & > div {
+    height: 100%;
+  }
 }
 
 .title {
   font-size: 1rem;
-  color: #f0f0f0;
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(125, 125, 125, 0.25);
+  width: 10%;
+  height: 25%;
+  border-radius: 50%;
+  z-index: 1;
+  top: 35%;
+  left: 45%;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+.ripple:hover::before {
+  -webkit-transform: scale(12);
+  transform: scale(12);
+  -webkit-transition: border-radius 0.5s 0.5s, -webkit-transform 0.5s;
+  transition: border-radius 0.5s 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, border-radius 0.5s 0.5s;
+  transition: transform 0.5s, border-radius 0.5s 0.5s, -webkit-transform 0.5s;
+}
+
+.ripple:hover::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }

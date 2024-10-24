@@ -4,9 +4,9 @@ export async function getPeople(page: number, searchTerm: string) {
   const params = new URLSearchParams();
   params.set("page", page.toString());
   if (searchTerm) {
-    params.set("name__contains", searchTerm);
+    params.set("search", searchTerm);
   } else {
-    params.delete("name__contains");
+    params.delete("search");
   }
   const res = await fetch(`${baseUrl}/people?${params.toString()}`);
   if (!res.ok) {

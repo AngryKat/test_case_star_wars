@@ -3,11 +3,11 @@
 .grid {
   ul {
     flex: 1;
-    padding: 16px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-
+    padding-inline: 1rem;
+    
     @include xl {
       grid-template-columns: 1fr 1fr;
     }

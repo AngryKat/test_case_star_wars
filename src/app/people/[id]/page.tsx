@@ -1,7 +1,7 @@
-import { PersonNodeFlow } from "@/components/PersonNodeFlow";
+import { PersonNodeFlow } from "@/components/PersonNodeFlow/PersonNodeFlow";
 import { getFilmById, getPersonById, getStarshipById } from "@/utils/api";
 import type { Film, Person, Starship } from "@/utils/types";
-import { createEdge, createNode } from "@/utils/reactFlowhelperFunctions";
+import { createEdge, createNode } from "@/utils/reactFlowHelperFunctions";
 
 // what info to omit while rendering a card
 const OMIT_STARSHIP_KEYS: Array<keyof Starship> = [
@@ -108,9 +108,5 @@ export default async function PersonPage({ params }: Props) {
   const edges = [...personToFilmEdges, ...filmsToStarshipsEdges];
   const nodes = [personNode, ...filmNodes, ...starshipsNodes];
 
-  return (
-    <div>
-      <PersonNodeFlow initialEdges={edges} initialNodes={nodes} />
-    </div>
-  );
+  return <PersonNodeFlow initialEdges={edges} initialNodes={nodes} />;
 }

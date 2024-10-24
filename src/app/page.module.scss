@@ -13,7 +13,20 @@
 .pagination {
   margin-top: auto;
   justify-content: center;
-  padding: 2rem 0;
+
+  &:first-of-type {
+    display: flex;
+    padding-top: 1rem;
+
+    @include m {
+      display: none;
+    }
+  }
+
+  &:last-child {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 }
 
 .gridContainer {

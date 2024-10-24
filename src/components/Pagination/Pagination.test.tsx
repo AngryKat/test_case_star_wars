@@ -25,11 +25,6 @@ describe("Pagination", () => {
     render(<Pagination total={20} currentPage={1} />);
     expect(screen.getByTestId("pagination")).not.toBeNull();
   });
-  it("renders the Pagination component if visibleOnMobileOnly is true and the screen is small", () => {
-    global.innerWidth = 500; // small screen size
-    render(<Pagination total={20} currentPage={1} visibleOnMobileOnly />);
-    expect(screen.getByTestId("pagination-mobile")).not.toBeNull();
-  });
   it("when click on page 2 the url has correct params", () => {
     render(<Pagination total={20} currentPage={1} />);
     fireEvent.click(screen.getAllByTitle("2")[0]);

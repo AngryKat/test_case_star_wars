@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import localFont from "next/font/local";
 import "./globals.css";
 import styles from "./layout.module.scss";
-import Link from "next/link";
 
 const jediSans = localFont({
   src: "./fonts/StarJedi Hollow.ttf",

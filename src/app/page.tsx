@@ -1,9 +1,11 @@
 import { Pagination } from "@/components/Pagination/Pagination";
-import { PersonGrid } from "@/components/PersonGrid";
+import { PersonGrid } from "@/components/PersonGrid/PersonGrid";
 import { getPeople } from "@/utils/api";
 import { Person } from "@/utils/types";
 import styles from "./page.module.scss";
-import { SearchInput } from "@/components/SearchInput";
+import { SearchInput } from "@/components/SearchInput/SearchInput";
+import { Fragment } from "react";
+import { NoPeopleToDisplay } from "@/components/NoPeopleToDisplay";
 
 export default async function Home({
   searchParams,
@@ -34,20 +36,25 @@ export default async function Home({
       <div className={styles.searchInputContainer}>
         <SearchInput />
       </div>
-      <Pagination
-        total={totalCount}
-        currentPage={page}
-        className={styles.pagination}
-        visibleOnMobileOnly
-      />
-      <div className={styles.gridContainer}>
-        {fetchedData.results && <PersonGrid items={fetchedData.results} />}
-      </div>
-      <Pagination
-        total={totalCount}
-        currentPage={page}
-        className={styles.pagination}
-      />
+      {!fetchedData || fetchedData.results?.length === 0 ? (
+        <NoPeopleToDisplay />
+      ) : (
+        <div className={styles.content}>
+          <Pagination
+            total={totalCount}
+            currentPage={page}
+            className={styles.pagination}
+          />
+          <div className={styles.gridContainer}>
+            {fetchedData.results && <PersonGrid items={fetchedData.results} />}
+          </div>
+          <Pagination
+            total={totalCount}
+            currentPage={page}
+            className={styles.pagination}
+          />
+        </div>
+      )}
     </div>
   );
 }

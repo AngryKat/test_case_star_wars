@@ -2,7 +2,7 @@
 import { Card } from "antd";
 import { Person } from "@/utils/types";
 import styles from "./PersonGridCard.module.scss";
-import ChevronRightIcon from "../../public/icons/chevron-right-icon.svg";
+import ChevronRightIcon from "../../../public/icons/chevron-right-icon.svg";
 
 export interface PersonGridCardProps {
   person: Person;

@@ -1,7 +1,7 @@
-import { Person } from "@/utils/types";
-import { PersonGridCard } from "../PersonGridCard/PersonGridCard";
-import styles from "./PersonGrid.module.scss";
 import Link from "next/link";
+import { Person } from "@/utils/types";
+import { PersonGridCard } from "@/components/PersonGridCard/PersonGridCard";
+import styles from "./PersonGrid.module.scss";
 
 export function PersonGrid({ items }: { items: Person[] }) {
   return (

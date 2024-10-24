@@ -9,10 +9,10 @@ import {
   useNodesState,
 } from "@xyflow/react";
 import { customReactFlowNode } from "@/utils/customReactFlowNode";
-import { NodeFlowCenterButton } from "../NodeFlowCenterButton";
+import { NodeCard } from "@/components/NodeCard/NodeCard";
+import { NodeFlowCenterButton } from "@/components/NodeFlowCenterButton";
 import "@xyflow/react/dist/style.css";
 import styles from "./PersonNodeFlow.module.scss";
-import { NodeCard } from "../NodeCard/NodeCard";
 
 const nodeTypes = {
   customNode: customReactFlowNode(NodeCard),

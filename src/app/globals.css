@@ -2,6 +2,10 @@
   Reset some default CSS style rules and specify global variables
 */
 
+:root {
+  --top-offset: 100px;
+}
+
 *,
 *::before,
 *::after {
@@ -16,6 +20,7 @@
 
 html,
 body {
+  overflow-x: hidden;
   height: 100%;
   min-width: var(--min-width);
 }

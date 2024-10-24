@@ -1,6 +1,9 @@
 @import "@/scss/mixins";
 
 .wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   background-color: #fdfdfd;
   @include m {
     padding: 0rem 5rem;
@@ -8,14 +11,15 @@
 }
 
 .pagination {
+  margin-top: auto;
   justify-content: center;
   padding: 2rem 0;
 }
 
-
 .gridContainer {
-  flex-grow: 1;
+  margin-top: 2rem;
 }
+
 .searchInputContainer {
   margin: 1rem;
   @include l {

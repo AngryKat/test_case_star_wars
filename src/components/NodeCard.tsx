@@ -43,7 +43,7 @@ export function NodeCard<T extends Record<string, string | number>>({
       }
     >
       {toggled && renderEntries}
-      <Button block>{toggled ? "Hide" : "Show"}</Button>
+      <Button block>{toggled ? "Hide" : "More"}</Button>
     </Card>
   );
 }

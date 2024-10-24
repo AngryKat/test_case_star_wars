@@ -8,11 +8,8 @@
     grid-template-columns: 1fr;
     gap: 1rem;
 
-    @include m {
-      grid-template-columns: 1fr 1fr;
-    }
     @include xl {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: 1fr 1fr;
     }
   }
 }

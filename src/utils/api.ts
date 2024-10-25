@@ -1,4 +1,4 @@
-const baseUrl = process.env.API_BASE_URL || "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 
 export async function getPeople(page: number, searchTerm: string) {
   const params = new URLSearchParams();

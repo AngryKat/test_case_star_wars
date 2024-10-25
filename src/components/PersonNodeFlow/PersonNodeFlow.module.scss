@@ -1,14 +1,12 @@
 .container {
-  width: 1200px;
+  width: max(100%, 1200px);
   height: 850px;
   border: 1px solid whitesmoke;
-  margin-inline: auto;
-  // margin-top: var(--top-offset);
 }
 
 .buttonContainer {
   position: absolute;
-  top: var(--top-offset);
+  top: calc(var(--top-offset) + 1rem);
   left: 1rem;
   z-index: 1;
 }

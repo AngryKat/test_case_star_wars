@@ -14,6 +14,7 @@ export async function getPeople(page: number, searchTerm: string) {
     console.error("Error while fetching people");
     return { error: { message: "Some error occurred" } };
   }
+
   return res.json();
 }
 

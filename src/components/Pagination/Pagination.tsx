@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { Pagination as AntdPagination } from "antd";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
@@ -12,8 +11,6 @@ export function Pagination({
   currentPage: number;
   className?: string;
 }) {
-  const [windowWidth, setWindowWidth] = useState(0);
-
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -26,12 +23,6 @@ export function Pagination({
     }
     replace(`${pathname}?${params.toString()}`);
   };
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    setWindowWidth(window.innerWidth);
-  }, []);
-
   return (
     <AntdPagination
       data-testid={"pagination"}
@@ -40,6 +31,7 @@ export function Pagination({
       onChange={handlePageChange}
       showSizeChanger={false}
       className={className}
+      hideOnSinglePage
     />
   );
 }

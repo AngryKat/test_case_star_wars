@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { Pagination } from "./Pagination";
 import { describe, expect, it, vi, afterEach, beforeEach, type Mock } from "vitest";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,7 @@ describe("Pagination", () => {
 
   afterEach(() => {
     vi.clearAllMocks();
+    cleanup();
   });
 
   it("renders the Pagination component", () => {

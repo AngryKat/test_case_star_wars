@@ -5,12 +5,12 @@ import { describe, expect, it, vi } from "vitest";
 import { type Edge, type Node, ReactFlowProvider } from "@xyflow/react";
 import { PersonNodeFlow } from "./PersonNodeFlow";
 
-vi.mock("./NodeFlowCenterButton", () => {
+vi.mock("@/components/NodeFlowCenterButton", () => {
   return {
     NodeFlowCenterButton: () => <div>Center Button</div>,
   };
 });
-vi.mock("./NodeCard", () => {
+vi.mock("@/components/NodeCard/NodeCard", () => {
   return {
     NodeCard: ({ label }: { label: string }) => <div>{label}</div>,
   };

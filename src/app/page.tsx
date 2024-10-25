@@ -5,7 +5,7 @@ import { Person } from "@/utils/types";
 import styles from "./page.module.scss";
 import { SearchInput } from "@/components/SearchInput/SearchInput";
 import { NoPeopleToDisplay } from "@/components/NoPeopleToDisplay";
-import { Suspense } from "react";
+import { Fragment, Suspense } from "react";
 import Loading from "./loading";
 
 export default async function Home({
@@ -37,29 +37,31 @@ export default async function Home({
       <div className={styles.searchInputContainer}>
         <SearchInput />
       </div>
-      <Suspense fallback={<Loading />}>
-        {fetchedData.results?.length === 0 ? (
-          <NoPeopleToDisplay />
-        ) : (
-          <div className={styles.content}>
-            <Pagination
-              total={totalCount}
-              currentPage={page}
-              className={styles.pagination}
-            />
-            <div className={styles.gridContainer}>
-              {fetchedData.results && (
-                <PersonGrid items={fetchedData.results} />
-              )}
-            </div>
-            <Pagination
-              total={totalCount}
-              currentPage={page}
-              className={styles.pagination}
-            />
-          </div>
-        )}
-      </Suspense>
+      <div className={styles.content}>
+        <Suspense fallback={<Loading />}>
+          {fetchedData.results?.length === 0 ? (
+            <NoPeopleToDisplay />
+          ) : (
+            <Fragment>
+              <Pagination
+                total={totalCount}
+                currentPage={page}
+                className={styles.pagination}
+              />
+              <div className={styles.gridContainer}>
+                {fetchedData.results && (
+                  <PersonGrid items={fetchedData.results} />
+                )}
+              </div>
+              <Pagination
+                total={totalCount}
+                currentPage={page}
+                className={styles.pagination}
+              />
+            </Fragment>
+          )}
+        </Suspense>
+      </div>
     </div>
   );
 }

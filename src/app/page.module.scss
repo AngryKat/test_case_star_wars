@@ -10,6 +10,12 @@
   }
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .pagination {
   margin-top: auto;
   justify-content: center;

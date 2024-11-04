@@ -1,6 +1,7 @@
 "use client";
 import React, { ChangeEvent } from "react";
 import { Input } from "antd";
+import { useDebouncedCallback } from 'use-debounce';
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import styles from "./SearchInput.module.scss";
 
@@ -9,7 +10,7 @@ export function SearchInput() {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = useDebouncedCallback((event: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value;
     const params = new URLSearchParams(searchParams);
     if (searchTerm) {
@@ -20,7 +21,7 @@ export function SearchInput() {
     replace(
       `${pathname}${params.toString().length ? "?" + params.toString() : ""}`
     );
-  };
+  }, 500);
 
   return (
     <Input

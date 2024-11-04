@@ -1,15 +1,13 @@
 @import "@/scss/mixins";
 
 .grid {
-  ul {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding-inline: 1rem;
-    
-    @include xl {
-      grid-template-columns: 1fr 1fr;
-    }
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding-inline: 1rem;
+
+  @include xl {
+    grid-template-columns: 1fr 1fr;
   }
 }

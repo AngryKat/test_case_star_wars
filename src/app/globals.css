@@ -2,10 +2,6 @@
   Reset some default CSS style rules and specify global variables
 */
 
-:root {
-  --top-offset: 83px;
-}
-
 *,
 *::before,
 *::after {
@@ -20,8 +16,7 @@
 
 html,
 body {
-  overflow-x: hidden;
-  height: 100%;
+  height: 100vh;
   min-width: var(--min-width);
 }
 
@@ -37,10 +32,4 @@ img {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-ul,
-li {
-  text-indent: 0;
-  list-style-type: none;
 }

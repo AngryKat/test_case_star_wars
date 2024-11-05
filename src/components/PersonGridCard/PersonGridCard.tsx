@@ -24,11 +24,15 @@ export function PersonGridCard({ name, url }: PersonGridCardProps) {
     >
       <div className={styles.content}>
         <h2 className={styles.title}>
-          <Link ref={mainLinkRef} href={url}>
+          <Link ref={mainLinkRef} href={url} className={styles.mainLink}>
             {name}
           </Link>
         </h2>
-        <Link href={url}>
+        <Link
+          href={url}
+          aria-label={`View more about ${name}`}
+          className={styles.iconLink}
+        >
           <ChevronRightIcon />
         </Link>
       </div>

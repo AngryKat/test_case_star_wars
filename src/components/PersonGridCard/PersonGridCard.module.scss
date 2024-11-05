@@ -12,6 +12,12 @@
 
   a {
     color: inherit;
+    &.mainLink:focus-visible {
+      outline: 1px solid yellow;
+    }
+    &.iconLink:focus-visible {
+      transform: scale(1.25);
+    }
   }
 }
 
